@@ -3,8 +3,7 @@ import asyncio
 from spade.agent import Agent
 from spade.behaviour import CyclicBehaviour
 
-class DummyAgent(Agent):
-    class MyBehav(CyclicBehaviour):
+class DummyAgent(Agent):    class MyBehav(CyclicBehaviour):
         async def on_start(self):
             print("Starting behaviour . . .")
             self.counter = 0
