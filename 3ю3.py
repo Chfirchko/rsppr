@@ -7,8 +7,8 @@ def func(x, y):
 
 pop = [[[1.1, -2.6]], [[32, 0.4]], [[-5, 6]], [[7.7, 18]], [[-19, 0.1]]]
 children = []
-e = -0.01
-h = 0.01
+e = -0.00001
+h = 0.1
 qwerty = 0
 for i in pop:
     i.append(func(i[0][0], i[0][1]))
@@ -35,6 +35,9 @@ while result > e:
         i[1] = func(i[0][0], i[0][1])
     while len(pop) > random.randint(5, 8):
         pop.pop()
+    result = pop[0][1]
+    if round(result, 2) == -0.07:
+        pop.pop(0)
     result = pop[0][1]
     qwerty += 1
     children.clear()
