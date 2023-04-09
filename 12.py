@@ -19,6 +19,11 @@ def start(x):
     return False
 
 
+def find_topic(x, topic):
+    if topic in x:
+        return True
+    return False
+
 def srach(x, y, qwerty):
     wiener = x.type
     flag = False
@@ -46,6 +51,17 @@ def srach(x, y, qwerty):
             print('-----------------Базар', qwerty, '-----------------')
             print(x.knowledge.cell(row=num, column=2).value)
             print(wiener)
+            flag = False
+            while flag == False:
+                num = random.randint(2, 20)
+                negi = y.knowledge.cell(row=num, column=6).value
+                ger = y.knowledge.cell(row=num, column=4).value
+                rs = start(y.knowledge.cell(row=num, column=4).value)
+                if (y.knowledge.cell(row=num, column=6).value == 1) & (
+                        start(y.knowledge.cell(row=num, column=4).value) == True):
+                    flag = True
+                print(y.knowledge.cell(row=num, column=2).value)
+                print(wiener)
         if one < two:
             while flag == False:
                 num = random.randint(2, 20)
@@ -59,6 +75,17 @@ def srach(x, y, qwerty):
             print('-----------------Базар', qwerty, '-----------------')
             print(y.knowledge.cell(row=num, column=2).value)
             print(wiener)
+            flag = False
+            while flag == False:
+                num = random.randint(2, 25)
+                negi = x.knowledge.cell(row=num, column=6).value
+                ger = x.knowledge.cell(row=num, column=4).value
+                if (x.knowledge.cell(row=num, column=6).value == 1) & (
+                        find_topic(x.knowledge.cell(row=num, column=4).value, y.knowledge.cell(row=num, column=4).value[:7]) == True) & (
+                        x.knowledge.cell(row=num, column=3).value != 1):
+                    flag = True
+            print(x.knowledge.cell(row=num, column=2).value)
+            print(wiener)
     return wiener
 
 
@@ -69,8 +96,8 @@ russians = russian.active
 hohlin = hohli.active
 
 russkie = 0
-for i in range(0, 20):
-    pos = random.uniform(-1, 1)
+pos = -1
+for i in range(0, 2):
     if 0 <= pos:
         ag = agent(pos, russians, 1, False)
         people.append(ag)
@@ -78,6 +105,7 @@ for i in range(0, 20):
     elif pos < 0:
         ag = agent(pos, hohlin, 2, False)
         people.append(ag)
+    pos += 2
 people.sort(key=lambda x: x.type)
 for i in people:
     print(i.type)
