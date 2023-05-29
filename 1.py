@@ -136,7 +136,7 @@ hohlin = hohli.active
 
 russkie = 0
 
-for i in range(0, 2000):
+for i in range(0, 9):
     pos = random.uniform(-10, 10)
     if 0 <= pos:
         ag = agent(pos, russians, 1, False, 1)
@@ -156,7 +156,7 @@ for i in people:
         hohl += 1
 print('Русские:', rus)
 print('Хохлы', hohl)
-for srachi in range(0, 50):
+for srachi in range(0, 3):
     intense = func(people)
     if intense == 1:
         break
