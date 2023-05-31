@@ -207,6 +207,7 @@ def processData(data, backprop=True):
     return loss / len(data), num_correct / len(data)
 
 
+
 for epoch in range(100):
     train_loss, train_acc = processData(train_data)
 
